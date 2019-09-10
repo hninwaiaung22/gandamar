@@ -2,6 +2,7 @@
 
 // Imports dependencies and set up http server
 const
+requestify=require('requestify'),
   express = require('express'),
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()); // creates express http server
@@ -24,11 +25,27 @@ app.post('/webhook', (req, res) => {
       // will only ever contain one message, so we get index 0
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
-    });
+      var senderID=webhook_event.sender.id;
+      console.log('senderID',senderID);
+      if(webhook_event.postback){
+      	var userButton=webhook_event.postback.payload;
+      	console.log('reply',userButton);
+    }
+    if (webhook_event.message) {if (webhook_event.message.text) {
+    	var userComment=webhook_event.message.text;
+    	console.log('userComment',userComment);
+    }
+	if (webhook_event.message.attachments){
+		var userImage=webhook_event.message.attachments;
+		console.log('userPhoto',userImage);
+
+	}}
 
     // Returns a '200 OK' response to all requests
     res.status(200).send('EVENT_RECEIVED');
-  } else {
+  }	
+      )
+      } else {
     // Returns a '404 Not Found' if event is not from a page subscription
     res.sendStatus(404);
   }
