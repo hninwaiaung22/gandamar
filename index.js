@@ -37,7 +37,7 @@ requestify=require('requestify'),
       "text":"Hello {{user_first_name}}! \nHave a nice adventure!!" 
     }
   ],
-  "Content-Type: application/json" -d {
+  "Content-Type: application/json" -d [{
   "recipient":{
     "id":"RECIPIENT_ID"
   }, 
@@ -106,7 +106,7 @@ requestify=require('requestify'),
       }
     }
   }
-} "https://graph.facebook.com/me/messages?access_token=PAGE_ACCESS_TOKEN"
+} "https://graph.facebook.com/me/messages?access_token=PAGE_ACCESS_TOKEN"]
 
       }).then(function(success){
           console.log('persistent_menu success');
