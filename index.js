@@ -106,7 +106,7 @@ requestify=require('requestify'),
       }
     }
   }
-} "https://graph.facebook.com/me/messages?access_token=PAGE_ACCESS_TOKEN"]
+} "https://graph.facebook.com/me/messages?access_token=PageAccessToken"]
 
       }).then(function(success){
           console.log('persistent_menu success');
