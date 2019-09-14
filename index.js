@@ -9,36 +9,37 @@ requestify=require('requestify'),
   PageAccessToken='EAAFlv95qJK0BAO4wStiwH9XpP0RTlqVondE6ZAUh3YoC8m3eAZBfx7uBiZCAhZCvgYDGynGHGFGxd7ZC5NpifnTAPXOM1OfJG7PKzh6Rjc0ZCEhcB4TZBZBe5Unl05eeUYZCi5ON5d4ossCcL1J4YK0bcsFWXJIBn4HUJGCSl5z5OTVFfskMf4ZCZAq',
   app = express().use(bodyParser.json()); // creates express http server
 
-  requestify.post('https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+PageAccessToken,
-  	{"get_started":{"payload":"Hi"},
-  	"persistent_menu":[
-  	{
-  		"locale":"default",
-  		"composer_input_disabled":false,
-  		"call_to_actions":[
-  		{
-  			"type":"postback",
-  			"title":"Home",
-  			"payload":"Hi"
+  requestify.post('https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+PageAccessToken
+        "persistent_menu": [
+        {
+            "locale": "default",
+            "composer_input_disabled": false,
+            "call_to_actions": [
+                {
+                    "type": "postback",
+                    "title": "Home",
+                    "payload": "Hi"
+                },
+                {
+                    "type": "web_url",
+                    "title": "Visit Page",
+                    "url": "https://mym-acavxb.firebaseapp.com/index.html",
+                    "webview_height_ratio": "tall"
+                }
+            ]
+        }
+        
+    ],
+    "greeting": [
+    {
+      "locale":"default",
+      "text":"Hello {{user_first_name}}! \nHave a nice adventure!!" 
+    }
+  ]
 
-  		},
-  		{
-  			"type":"web_url",
-  			"title":"Visit Page",
-  			"url":"https://mym-acavxb.firebaseapp.com/index.html",
-  			"webview_height_ratio":"tall"
-
-
-  		}
-  	]
-
-  }
- ]
-
-}).then(function(success) {
-	console.log('persistent_menu.success');
-	// body...
-})
+      }).then(function(success){
+          console.log('persistent_menu success');
+        })
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
