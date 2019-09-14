@@ -33,7 +33,7 @@ requestify=require('requestify'),
   	]
 
   }
- ],
+ ]
 
 })
 
