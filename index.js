@@ -10,7 +10,7 @@ requestify=require('requestify'),
   app = express().use(bodyParser.json()); // creates express http server
 
   requestify.post('https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+PageAccessToken,
-  	{"get_started":{"payload":"Hi"};
+  	{"get_started":{"payload":"Hi"},
   	"persistent_menu":[
   	{
   		"locale":"default",
