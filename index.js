@@ -35,6 +35,9 @@ requestify=require('requestify'),
   }
  ]
 
+}).then(function(success) {
+	console.log('persistent_menu.success');
+	// body...
 })
 
 // Sets server port and logs message on success
