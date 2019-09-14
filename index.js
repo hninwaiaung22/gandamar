@@ -2,13 +2,73 @@
 
 // Imports dependencies and set up http server
 const
+requestify= require('requestify')
 requestify=require('requestify'),
   express = require('express'),
   bodyParser = require('body-parser'),
+  PageAccessToken='EAAFlv95qJK0BAO4wStiwH9XpP0RTlqVondE6ZAUh3YoC8m3eAZBfx7uBiZCAhZCvgYDGynGHGFGxd7ZC5NpifnTAPXOM1OfJG7PKzh6Rjc0ZCEhcB4TZBZBe5Unl05eeUYZCi5ON5d4ossCcL1J4YK0bcsFWXJIBn4HUJGCSl5z5OTVFfskMf4ZCZAq',
   app = express().use(bodyParser.json()); // creates express http server
+
+  requestify.post('https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+PAT,
+  	{"get_started":{"payload":"Hi"};
+  	"persistent_menu":[
+  	{
+  		"locale":"default",
+  		"composer_input_disabled":false,
+  		"call_to_actions":[
+  		{
+  			"type":"postback",
+  			"title":"Home",
+  			"payload":"Hi"
+
+  		},
+  		{
+  			"type":"web_url",
+  			"title":"Visit Page",
+  			"url":"https://mym-acavxb.firebaseapp.com/index.html",
+  			"webview_height_ratio":"tall"
+
+
+  		}
+  	]
+
+  }
+ ],
+
+})
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+
+/
+
+// Adds support for GET requests to our webhook
+app.get('/webhook', (req, res) => {
+
+  // Your verify token. Should be a random string.
+  let VERIFY_TOKEN = "393349721367725"
+    
+  // Parse the query params
+  let mode = req.query['hub.mode'];
+  let token = req.query['hub.verify_token'];
+  let challenge = req.query['hub.challenge'];
+    
+  // Checks if a token and mode is in the query string of the request
+  if (mode && token) {
+  
+    // Checks the mode and token sent is correct
+    if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+      
+      // Responds with the challenge token from the request
+      console.log('WEBHOOK_VERIFIED');
+      res.status(200).send(challenge);
+    
+    } else {
+      // Responds with '403 Forbidden' if verify tokens do not match
+      res.sendStatus(403);      
+    }
+  }
+});
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
@@ -50,33 +110,5 @@ app.post('/webhook', (req, res) => {
     res.sendStatus(404);
   }
 
-});
-
-// Adds support for GET requests to our webhook
-app.get('/webhook', (req, res) => {
-
-  // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = "393349721367725"
-    
-  // Parse the query params
-  let mode = req.query['hub.mode'];
-  let token = req.query['hub.verify_token'];
-  let challenge = req.query['hub.challenge'];
-    
-  // Checks if a token and mode is in the query string of the request
-  if (mode && token) {
-  
-    // Checks the mode and token sent is correct
-    if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-      
-      // Responds with the challenge token from the request
-      console.log('WEBHOOK_VERIFIED');
-      res.status(200).send(challenge);
-    
-    } else {
-      // Responds with '403 Forbidden' if verify tokens do not match
-      res.sendStatus(403);      
-    }
-  }
 });
 
