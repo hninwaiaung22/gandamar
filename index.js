@@ -10,27 +10,6 @@ requestify=require('requestify'),
   app = express().use(bodyPa
   ser.json()); // creates express http server 
    const sendmeassageurl='https://graph.facebook.com/v2.6/me/messenger_profile?access_token'+PageAccessToken
-   let generictemplate={
-   		"recipient":{
-   		"id":"senderID"
-   		},
-   		"message":{
-   			"attachments":{
-   				"type":"template",
-   				"payload":{
-   					"template_type":"generic",
-   					"elements"
-   					{
-   						"title":"",
-   						"image_url":"",
-   						"substitle":"",
-   						"buttons":[]
-   					}
-   				}
-   			}
-   		}
-
-   
 
   requestify.post('https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+PageAccessToken,
   	{"get_started":{"payload":"Hi"},
@@ -56,7 +35,13 @@ requestify=require('requestify'),
   	]
 
   }
- ]
+ ],
+  "greeting": [
+    {
+      "locale":"default",
+      "text":"Hello {{user_first_name}}! \nWe provide service!!" 
+    }
+  ]
 
 }).then(function(success) {
 	console.log('persistent_menu.success');
@@ -87,7 +72,7 @@ app.get('/webhook', (req, res) => {
       
       // Responds with the challenge token from the request
       console.log('WEBHOOK_VERIFIED');
-      res.status(200).send(challenge);
+   	   res.status(200).send(challenge);
     
     } else {
       // Responds with '403 Forbidden' if verify tokens do not match
@@ -126,22 +111,58 @@ app.post('/webhook', (req, res) => {
 		console.log('userPhoto',userImage);
 
 	}}
+	 if(userButton == 'Hi' || userComment == 'Hi'){
+
+ 
+requestify.post(sendmessageurl,
+{        
+        "recipient":{
+    "id":senderID
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload": {
+  "template_type":"generic",
+  "elements":[
+     {
+      "title":"Hi",
+	  "image_url":"https://sites.psu.edu/siowfa16/files/2016/10/YeDYzSR-10apkm4.png",
+      "subtitle":"test",
+      "buttons":[{
+  "type": "postback",
+  "title": "button 1",
+  "payload": "payload 1"
+},{
+  "type": "postback",
+  "title": "button 2",
+  "payload": "payload 2"
+},{
+  "type": "postback",
+  "title": "button 3",
+  "payload": "payload 3"
+}
+	  ]      
+    }]
+    
+  
+}
+    }
+  }
+      }).then(function(success){
+console.log('successful template');
+}).catch(function(error){
+console.log('error', error);
+  
+  });
+  }
+  
+  
+    });
 
     // Returns a '200 OK' response to all requests
     res.status(200).send('EVENT_RECEIVED');
-  }	
-     if Hi
-     	let button={"type": "postback",
-  "title": "<BUTTON_TEXT>",
-  "payload": "<STRING_SENT_TO_WEBHOOK>"}
-  data.message.elements.buttons=[]
-  data.message.elements.buttons.push(button);
-  data.message.elements.title=''
-  data.message.elements.title="SaBal Phyu"
-
-  requestify(sendmeassageurl,generictemplate)
-      )
-      } else {
+     } else {
     // Returns a '404 Not Found' if event is not from a page subscription
     res.sendStatus(404);
   }
