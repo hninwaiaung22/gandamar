@@ -2,7 +2,6 @@
 
 // Imports dependencies and set up http server
 const
-requestify= require('requestify')
 requestify=require('requestify'),
   express = require('express'),
   bodyParser = require('body-parser'),
