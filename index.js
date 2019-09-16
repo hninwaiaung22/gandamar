@@ -143,7 +143,8 @@ requestify.post(sendmessageurl,
   "title": "button 3",
   "payload": "payload 3"
 }
-}],
+}]
+},
 
 {
       "title":"SaPal Phyu",
@@ -161,11 +162,11 @@ requestify.post(sendmessageurl,
   "type": "postback",
   "title": "button 3",
   "payload": "payload 3"
-}
-	  ]      
+}       
     }]
     
-  
+}
+]
 }
     }
   }
