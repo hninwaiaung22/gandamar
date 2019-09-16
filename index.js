@@ -163,7 +163,7 @@ requestify.post(sendmessageurl,
   "title": "button 3",
   "payload": "payload 3"
 }       
-    }]
+ ]
     
 }
 ]
