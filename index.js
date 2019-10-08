@@ -146,17 +146,21 @@ requestify.post(sendmessageurl,
   "template_type":"generic",
   "elements":[
      {
-      "title":"Welcome from SaPalPhyu Plantation",
+      "title":"Hi",
 	  "image_url":"https://sites.psu.edu/siowfa16/files/2016/10/YeDYzSR-10apkm4.png",
       "subtitle":"test",
       "buttons":[{
   "type": "postback",
-  "title": "Worker",
+  "title": "button 1",
   "payload": "payload 1"
 },{
   "type": "postback",
-  "title": "Supplier",
+  "title": "button 2",
   "payload": "payload 2"
+},{
+  "type": "postback",
+  "title": "button 3",
+  "payload": "payload 3"
 }
 ]
 }
