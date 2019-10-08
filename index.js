@@ -8,7 +8,7 @@ requestify=require('requestify'),
   PageAccessToken='EAAFlv95qJK0BAO4wStiwH9XpP0RTlqVondE6ZAUh3YoC8m3eAZBfx7uBiZCAhZCvgYDGynGHGFGxd7ZC5NpifnTAPXOM1OfJG7PKzh6Rjc0ZCEhcB4TZBZBe5Unl05eeUYZCi5ON5d4ossCcL1J4YK0bcsFWXJIBn4HUJGCSl5z5OTVFfskMf4ZCZAq',
   app = express().use(bodyParser.json()); // creates express http server 
    const sendmessageurl='https://graph.facebook.com/v4.0/me/messages?access_token='+PageAccessToken
-   const admin= require('firebae-admin');
+   const admin= require('firebase-admin');
 
    const serviceAccount=({
   "type": "service_account",
