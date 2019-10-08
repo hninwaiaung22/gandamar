@@ -163,7 +163,28 @@ console.log('error', error);
   
   });
   }
+   if(userComment == "Worker"){
+   	"recipient":{
+    "id":senderID
+  },
   
+  "message":{
+    "text": "Choose type:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Male",
+        "payload":"payload",
+        "image_url":"http://example.com/img/red.png"
+      },{
+        "content_type":"text",
+        "title":"Female",
+        "payload":"payload",
+        "image_url":"http://example.com/img/green.png"
+      }
+    ]
+  }
+   }
   
     });
 
