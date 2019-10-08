@@ -136,33 +136,25 @@ app.post('/webhook', (req, res) => {
  
 requestify.post(sendmessageurl,
 {        
-        "recipient":{
-    "id":senderID
+       "recipient":{
+    "id":"<PSID>"
   },
+  "messaging_type": "RESPONSE",
   "message":{
-    "attachment":{
-      "type":"template",
-      "payload": {
-  "template_type":"generic",
-  "elements":[
-     {
-      "title":"Weclome from My SapalPhyu Plantation",
-	  "image_url":"https://sites.psu.edu/siowfa16/files/2016/10/YeDYzSR-10apkm4.png",
-      "subtitle":"test",
-      "buttons":[{
-  "type": "postback",
-  "title": "Worker",
-  "payload": "payload 1"
-},{
-  "type": "postback",
-  "title": "Supplier",
-  "payload": "payload 2"
-}
-]
-}
-]
-}
-    }
+    "text": "Choose type:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Worker",
+        "payload":"<POSTBACK_PAYLOAD>",
+        "image_url":"http://example.com/img/red.png"
+      },{
+        "content_type":"text",
+        "title":"Owner",
+        "payload":"<POSTBACK_PAYLOAD>",
+        "image_url":"http://example.com/img/green.png"
+      }
+    ]
   }
       }).then(function(success){
 console.log('successful template');
