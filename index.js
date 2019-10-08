@@ -139,7 +139,7 @@ requestify.post(sendmessageurl,
        "recipient":{
     "id":"<PSID>"
   },
-  "messaging_type": "RESPONSE",
+  
   "message":{
     "text": "Choose type:",
     "quick_replies":[
