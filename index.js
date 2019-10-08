@@ -137,7 +137,7 @@ app.post('/webhook', (req, res) => {
 requestify.post(sendmessageurl,
 {        
        "recipient":{
-    "id":"<PSID>"
+    "id":senderID
   },
   
   "message":{
@@ -146,12 +146,12 @@ requestify.post(sendmessageurl,
       {
         "content_type":"text",
         "title":"Worker",
-        "payload":"<POSTBACK_PAYLOAD>",
+        "payload":"payload",
         "image_url":"http://example.com/img/red.png"
       },{
         "content_type":"text",
         "title":"Owner",
-        "payload":"<POSTBACK_PAYLOAD>",
+        "payload":"payload",
         "image_url":"http://example.com/img/green.png"
       }
     ]
