@@ -187,10 +187,13 @@ console.log('error', error);
       }
     ]
   }
-   
-}
+   }).then(function(success){
+console.log('successful template');
+}).catch(function(error){
+console.log('error', error);
   
     });
+}
 
     // Returns a '200 OK' response to all requests
     res.status(200).send('EVENT_RECEIVED');
