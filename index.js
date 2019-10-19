@@ -217,7 +217,7 @@ if(userComment == "Owner"){
   }) 
 }
  if (userComment == "Monitor"){
- 	
+
  	requestify.post(sendmessageurl,
  	{
  		"recipient":{
@@ -230,9 +230,9 @@ if(userComment == "Owner"){
         "template_type":"generic",
         "elements":[
            {
-            "title":"Welcome!",
+            "title":"Build Tent or Update Tent",
             "image_url":"https://petersfancybrownhats.com/company_image.png",
-            "subtitle":"We have the right hat for everyone.",
+            "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
             "default_action": {
               "type": "web_url",
               "url": "https://petersfancybrownhats.com/view?item=103",
@@ -242,7 +242,7 @@ if(userComment == "Owner"){
               {
                 "type":"web_url",
                 "url":"https://petersfancybrownhats.com",
-                "title":"View Website"
+                "title":"Send to worker"
               }         
             ]      
           }
