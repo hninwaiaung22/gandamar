@@ -281,6 +281,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 			if(doc.data().worker == 'Male'){
 				let data = {
             "title":doc.data().name,
+            "subtitle":"19 October 2019 to build tent",
             	"buttons":[
               {
                 "type":"postback",
