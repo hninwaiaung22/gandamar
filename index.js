@@ -187,7 +187,7 @@ console.log('error', error);
       }
     ]
   }
-   }
+   
 }
   
     });
