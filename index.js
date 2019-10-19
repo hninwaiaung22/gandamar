@@ -245,8 +245,8 @@ if(userComment == "Owner"){
                 "title":"Send to worker"
               }
 
-             ]}
-                
+             ]},
+
               {
             "title":"Build groove or Update groove",
             "image_url":"https://petersfancybrownhats.com/company_image.png",
