@@ -233,12 +233,13 @@ if(userComment == "Owner"){
             "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
             "default_action": {
               "type": "web_url",
-              "webview_height_ratio": "tall"
+              "webview_height_ratio": "tall",
             },
             "buttons":[
               {
                 "type":"postback",
-                "title":"Send to worker"
+                "title":"Send to worker",
+                "payload":"payload"
               }
 
              ]},
@@ -248,12 +249,13 @@ if(userComment == "Owner"){
             "subtitle":"Worker must go into the tent and view the groove condition and report to me.",
             "default_action": {
               "type": "web_url",
-              "webview_height_ratio": "tall"
+              "webview_height_ratio": "tall",
             },
             "buttons":[
               {
                 "type":"postback",
-                "title":"Send to worker"
+                "title":"Send to worker",
+                "payload":"payload"
               }         
             ]      
           }
