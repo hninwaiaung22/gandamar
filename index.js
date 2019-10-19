@@ -243,6 +243,21 @@ if(userComment == "Owner"){
                 "type":"web_url",
                 "url":"https://petersfancybrownhats.com",
                 "title":"Send to worker"
+              }    
+              {
+            "title":"Build groove or Update groove",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"Worker must go into the tent and view the groove condition and report to me.",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://petersfancybrownhats.com/view?item=103",
+              "webview_height_ratio": "tall",
+            },
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://petersfancybrownhats.com",
+                "title":"Send to worker"
               }         
             ]      
           }
