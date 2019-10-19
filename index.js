@@ -217,7 +217,8 @@ if(userComment == "Owner"){
   }) 
 }
  if (userComment == "Monitor"){
- 	requestify.post.(sendmessageurl,
+ 	
+ 	requestify.post(sendmessageurl,
  	{
  		"recipient":{
  		"id":senderID
