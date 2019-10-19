@@ -146,13 +146,13 @@ requestify.post(sendmessageurl,
       {
         "content_type":"text",
         "title":"Worker",
-        "payload":"payload",
-        "image_url":"http://example.com/img/red.png"
+        "payload":"payload"
+        
       },{
         "content_type":"text",
         "title":"Owner",
-        "payload":"payload",
-        "image_url":"http://example.com/img/green.png"
+        "payload":"payload"
+       
       }
     ]
   }
@@ -177,13 +177,12 @@ console.log('error', error);
       {
         "content_type":"text",
         "title":"Male",
-        "payload":"payload",
-        "image_url":"http://example.com/img/red.png"
+        "payload":"payload"
+        
       },{
         "content_type":"text",
         "title":"Female",
-        "payload":"payload",
-        "image_url":"http://example.com/img/green.png"
+        "payload":"payload"
       }
     ]
   }
@@ -204,13 +203,13 @@ if(userComment == "Owner"){
       {
         "content_type":"text",
         "title":"Monitor",
-        "payload":"payload",
-        "image_url":"http://example.com/img/red.png"
+        "payload":"payload"
+        
       },{
         "content_type":"text",
         "title":"View Report",
-        "payload":"payload",
-        "image_url":"http://example.com/img/green.png"
+        "payload":"payload"
+        
       } 
     ]
   }
@@ -231,17 +230,14 @@ if(userComment == "Owner"){
         "elements":[
            {
             "title":"Build Tent or Update Tent",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
             "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
             "default_action": {
               "type": "web_url",
-              "url": "https://petersfancybrownhats.com/view?item=103",
-              "webview_height_ratio": "tall",
+              "webview_height_ratio": "tall"
             },
             "buttons":[
               {
-                "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
+                "type":"postback",
                 "title":"Send to worker"
               }
 
@@ -249,23 +245,18 @@ if(userComment == "Owner"){
 
               {
             "title":"Build groove or Update groove",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
             "subtitle":"Worker must go into the tent and view the groove condition and report to me.",
             "default_action": {
               "type": "web_url",
-              "url": "https://petersfancybrownhats.com/view?item=103",
-              "webview_height_ratio": "tall",
+              "webview_height_ratio": "tall"
             },
             "buttons":[
               {
-                "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
+                "type":"postback",
                 "title":"Send to worker"
               }         
             ]      
           }
-        
-      
       ]
     }
   }
@@ -288,13 +279,13 @@ if (userComment == "Male"){
       {
         "content_type":"text",
         "title":"Making groove",
-        "payload":"payload",
-        "image_url":"http://example.com/img/red.png"
+        "payload":"payload"
+       
       },{
         "content_type":"text",
         "title":"building tent",
-        "payload":"payload",
-        "image_url":"http://example.com/img/green.png"
+        "payload":"payload"
+        
       }
     ]
   }
@@ -315,18 +306,18 @@ if (userComment == "Female"){
       {
         "content_type":"text",
         "title":"Cleaning grass",
-        "payload":"payload",
-        "image_url":"http://example.com/img/red.png"
+        "payload":"payload"
+        
       },{
         "content_type":"text",
         "title":"Picking tip",
-        "payload":"payload",
-        "image_url":"http://example.com/img/green.png"
+        "payload":"payload"
+       
       },{
         "content_type":"text",
         "title":"Bamboo Matting",
-        "payload":"payload",
-        "image_url":"http://example.com/img/green.png"
+        "payload":"payload"
+       
       }
     ]
   }
