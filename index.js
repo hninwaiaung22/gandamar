@@ -291,9 +291,8 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
              ]}
              elements.push(data)
 			}
-		}
 
-requestify.post(sendmessageurl,
+			requestify.post(sendmessageurl,
  	{
  		"recipient":{
  		"id":senderID
@@ -308,6 +307,9 @@ requestify.post(sendmessageurl,
   }
 }
  	})
+		}
+
+
 		)}
 })
 }
