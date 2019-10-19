@@ -238,13 +238,13 @@ if(userComment == "Owner"){
             	"buttons":[
               {
                 "type":"postback",
-                "title":"Send to worker",
+                "title":"Send to worker"
                 
               }
 
              ]},
 
-              {
+           {
             "title":"Build groove or Update groove",
             "subtitle":"Worker must go into the tent and view the groove condition and report to me.",
             "default_action": {
@@ -254,7 +254,7 @@ if(userComment == "Owner"){
            		"buttons":[
               {
                 "type":"postback",
-                "title":"Send to worker",
+                "title":"Send to worker"
                
               }         
             ]      
