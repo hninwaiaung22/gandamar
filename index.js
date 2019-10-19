@@ -164,7 +164,7 @@ console.log('error', error);
   });
   }
    if(userComment == "Worker"){
-   	
+
    	requestify.post(sendmessageurl,
    {	
    		"recipient":{
@@ -188,6 +188,7 @@ console.log('error', error);
     ]
   }
    }
+}
   
     });
 
