@@ -189,6 +189,64 @@ console.log('error', error);
   }
   }) 
 }
+if (userComment == "Male"){
+
+   	requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":senderID
+  },
+  
+  "message":{
+    "text": "Choose work:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Making groove",
+        "payload":"payload",
+        "image_url":"http://example.com/img/red.png"
+      },{
+        "content_type":"text",
+        "title":"building tent",
+        "payload":"payload",
+        "image_url":"http://example.com/img/green.png"
+      }
+    ]
+  }
+  }) 
+}
+
+if (userComment == "Female"){
+
+   	requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":senderID
+  },
+  
+  "message":{
+    "text": "Choose work:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Cleaning grass",
+        "payload":"payload",
+        "image_url":"http://example.com/img/red.png"
+      },{
+        "content_type":"text",
+        "title":"Picking tip",
+        "payload":"payload",
+        "image_url":"http://example.com/img/green.png"
+      },{
+        "content_type":"text",
+        "title":"Bamboo Matting",
+        "payload":"payload",
+        "image_url":"http://example.com/img/green.png"
+      }
+    ]
+  }
+  }) 
+}
   
     });
 
