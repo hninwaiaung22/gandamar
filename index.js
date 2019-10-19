@@ -235,11 +235,11 @@ if(userComment == "Owner"){
               "type": "web_url",
               "webview_height_ratio": "tall",
             },
-            "buttons":[
+            	"buttons":[
               {
                 "type":"postback",
                 "title":"Send to worker",
-                "payload":"payload"
+                
               }
 
              ]},
@@ -251,11 +251,11 @@ if(userComment == "Owner"){
               "type": "web_url",
               "webview_height_ratio": "tall",
             },
-            "buttons":[
+           		"buttons":[
               {
                 "type":"postback",
                 "title":"Send to worker",
-                "payload":"payload"
+               
               }         
             ]      
           }
