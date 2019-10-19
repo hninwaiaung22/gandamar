@@ -234,20 +234,20 @@ if(userComment == "Owner"){
             	"buttons":[
               {
                 "type":"postback",
-                "title":"Send to worker",
-                "payload":"sendtoworker"
+                "title":"Build Tent",
+                "payload":"build tent"
               }
 
              ]},
 
            {
-            "title":"Build Tent or Update Tent",
-            "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
+            "title":"Prepare soil and make groove",
+            "subtitle":"Worker must go into the tent and view the soil condition and report to me.",
             	"buttons":[
               {
                 "type":"postback",
-                "title":"Send to worker",
-                "payload":"sendtoworker"
+                "title":"Prepare soil",
+                "payload":"Prepare soil"
               }
 
              ]}
@@ -316,6 +316,33 @@ if (userComment == "Female"){
     ]
   }
   }) 
+}
+
+if (userButton == "build tent"){
+
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+let data = {
+	name: 'Build Tent',
+	date: `${day} ${month} ${year}`,
+	worker: 'Male'
+}
+
+db.collection('Dailywork').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
+
 }
   
     });
