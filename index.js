@@ -231,10 +231,10 @@ if(userComment == "Owner"){
            {
             "title":"Build Tent or Update Tent",
             "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
-            "default_action": {
-              "type": "web_url",
-              "webview_height_ratio": "tall",
-            },
+            // "default_action": {
+            //   "type": "postback",
+            //   "webview_height_ratio": "tall",
+            // },
             	"buttons":[
               {
                 "type":"postback",
@@ -247,10 +247,10 @@ if(userComment == "Owner"){
            {
             "title":"Build groove or Update groove",
             "subtitle":"Worker must go into the tent and view the groove condition and report to me.",
-            "default_action": {
-              "type": "web_url",
-              "webview_height_ratio": "tall",
-            },
+            // "default_action": {
+            //   "type": "web_url",
+            //   "webview_height_ratio": "tall",
+            // },
            		"buttons":[
               {
                 "type":"postback",
