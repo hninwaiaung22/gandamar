@@ -164,8 +164,11 @@ console.log('error', error);
   });
   }
    if(userComment == "Worker"){
-   	"recipient":{
-    "id":senderID
+   	
+   	requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":senderID
   },
   
   "message":{
