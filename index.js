@@ -189,6 +189,33 @@ console.log('error', error);
   }
   }) 
 }
+
+if(userComment == "Owner"){
+
+   	requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":senderID
+  },
+  
+  "message":{
+    "text": "Choose function:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Monitor",
+        "payload":"payload",
+        "image_url":"http://example.com/img/red.png"
+      },{
+        "content_type":"text",
+        "title":"View Report",
+        "payload":"payload",
+        "image_url":"http://example.com/img/green.png"
+      } 
+    ]
+  }
+  }) 
+}
 if (userComment == "Male"){
 
    	requestify.post(sendmessageurl,
