@@ -551,7 +551,7 @@ db.collection('Dailywork').add(data).then(ref=>{
 })
 
 
-}
+},
 
 
 
@@ -580,7 +580,7 @@ db.collection('Dailywork').add(data).then(ref=>{
 })
 
 
-}
+},
 
 if (userButton == "make bamboo matting"){
 
