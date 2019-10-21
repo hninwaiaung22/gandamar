@@ -439,7 +439,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 			}
 
 			
-		}
+		
 		requestify.post(sendmessageurl,
  	{
  		"recipient":{
