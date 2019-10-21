@@ -514,6 +514,34 @@ db.collection('Dailywork').add(data).then(ref=>{
 
 
 }
+
+
+if (userButton == "start planting"){
+
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+let data = {
+	name: 'Start Planting',
+	date: `${day} ${month} ${year}`,
+	worker: 'Female'
+}
+
+db.collection('Dailywork').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
+
+}
   
    } );
 
