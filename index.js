@@ -456,7 +456,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 }
  	})
 
-
+}
 		)}
 })
 }
