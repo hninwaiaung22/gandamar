@@ -250,6 +250,18 @@ if(userComment == "Owner"){
                 "payload":"Prepare soil"
               }
 
+             ]},
+
+             {
+            "title":"Planting",
+            "subtitle":"Female worker need to plant according to the owner direction.",
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Start Planting",
+                "payload":"start planting"
+              }
+
              ]}
       ]
     }
