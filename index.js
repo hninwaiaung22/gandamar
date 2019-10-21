@@ -365,7 +365,7 @@ var elements = []
 db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
 	if(snapshot.empty){}
 		else{
-elements = []
+			elements = []
 			snapshot.forEach( doc => {
 			if(doc.data().worker == 'Male'){
 				let data = {
@@ -379,10 +379,13 @@ elements = []
               }
 
              ]}
+
              elements.push(data)
 			}
 
-			requestify.post(sendmessageurl,
+			
+		}
+		requestify.post(sendmessageurl,
  	{
  		"recipient":{
  		"id":senderID
@@ -397,7 +400,6 @@ elements = []
   }
 }
  	})
-		}
 
 
 		)}
@@ -505,7 +507,10 @@ elements = []
 
 			
 		
-		requestify.post(sendmessageurl,
+		
+
+}
+requestify.post(sendmessageurl,
  	{
  		"recipient":{
  		"id":senderID
@@ -520,8 +525,6 @@ elements = []
   }
 }
  	})
-
-}
 		)}
 })
 }
