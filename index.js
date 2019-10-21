@@ -384,7 +384,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 			}
 
 			
-		}
+		})
 		requestify.post(sendmessageurl,
  	{
  		"recipient":{
@@ -399,10 +399,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
     }
   }
 }
- 	})
-
-
-		)}
+ 	})}
 })
 
 }
@@ -509,7 +506,7 @@ elements = []
 		
 		
 
-}
+})
 requestify.post(sendmessageurl,
  	{
  		"recipient":{
@@ -524,8 +521,7 @@ requestify.post(sendmessageurl,
     }
   }
 }
- 	})
-		)}
+ 	})}
 })
 }
 
