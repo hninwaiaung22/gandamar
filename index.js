@@ -400,7 +400,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 
 		)}
 })
-}
+
 
 if (userButton == "build tent"){
 
@@ -458,7 +458,7 @@ db.collection('Dailywork').add(data).then(ref=>{
 
 }
 
-
+}
 
 
 if (userComment == "Female"){
