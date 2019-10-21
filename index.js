@@ -364,7 +364,9 @@ var elements = []
 
 db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
 	if(snapshot.empty){}
-		else{snapshot.forEach( doc => {
+		else{
+elements = []
+			snapshot.forEach( doc => {
 			if(doc.data().worker == 'Male'){
 				let data = {
             "title":doc.data().name,
@@ -401,7 +403,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 		)}
 })
 
-
+}
 if (userButton == "build tent"){
 
 	var a = new Date()
@@ -458,7 +460,7 @@ db.collection('Dailywork').add(data).then(ref=>{
 
 }
 
-}
+
 
 
 if (userComment == "Female"){
@@ -481,7 +483,9 @@ var elements = []
 
 db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
 	if(snapshot.empty){}
-		else{snapshot.forEach( doc => {
+		else{
+elements = []
+			snapshot.forEach( doc => {
 			if(doc.data().worker == 'Female'){
 				let data = {
             "title":doc.data().name,
