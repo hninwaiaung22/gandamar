@@ -404,36 +404,61 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 
 if (userComment == "Female"){
 
-   	requestify.post(sendmessageurl,
-   {	
-   		"recipient":{
-  	  	"id":senderID
-  },
-  
-  "message":{
-    "text": "Choose work:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Cleaning grass",
-        "payload":"payload"
-        
-      },{
-        "content_type":"text",
-        "title":"Picking tip",
-        "payload":"payload"
-       
-      },{
-        "content_type":"text",
-        "title":"Bamboo Matting",
-        "payload":"payload"
-       
-      }
-    ]
-  }
-  }) 
-}
+   var a = new Date()
 
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+var todaydate = `${day} ${month} ${year}`
+
+var elements = []
+
+db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
+	if(snapshot.empty){}
+		else{snapshot.forEach( doc => {
+			if(doc.data().worker == 'Female'){
+				let data = {
+            "title":doc.data().name,
+            "subtitle":`${doc.data().date} to ${doc.data().name}`,
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Complete",
+                "payload":`Workcomplete ${doc.data().date} ${doc.data().name}`
+              }
+
+             ]}
+             elements.push(data)
+			}
+
+			requestify.post(sendmessageurl,
+ 	{
+ 		"recipient":{
+ 		"id":senderID
+ 	},
+ 	"message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":elements
+    }
+  }
+}
+ 	})
+		}
+
+
+		)}
+})
+}
 if (userButton == "build tent"){
 
 	var a = new Date()
