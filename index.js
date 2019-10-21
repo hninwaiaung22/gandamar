@@ -262,7 +262,82 @@ if(userComment == "Owner"){
                 "payload":"start planting"
               }
 
+             ]},
+
+             {
+            "title":"Add Fertilizer",
+            "subtitle":"Female worker need to add according to the direction.",
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Add Fertilizer",
+                "payload":"add fertilizer"
+              }
+
+             ]},
+
+             {
+            "title":"Bamboo Matting",
+            "subtitle":"Female worker need to make bamboo matting for 2 months plant.",
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Make Bamboo Matting",
+                "payload":"make bamboo matting"
+              }
+
+             ]},
+
+             {
+            "title":"Pick up and Bunch up flower",
+            "subtitle":"Female worker must pick up the flowers and then bunch up the flowers.",
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Pick Up in Blassom time",
+                "payload":"pickup and bunchup"
+              }
+
+             ]},
+
+             {
+            "title":"Deliver plant to wholesale",
+            "subtitle":"Female worker .",
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Delivering the flowers",
+                "payload":"deliver plants"
+              }
+
+             ]},
+
+             {
+            "title":"Contact to small client",
+            "subtitle":"if the flowers has a small pieces of bunchup.",
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":" contact to small client",
+                "payload":"contact to sc"
+              }
+
+             ]},
+
+             {
+            "title":"Job Position for Worker",
+            "subtitle":"We are needed the position of work for Both Male and Female .",
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Job position for workers",
+                "payload":"job position"
+              }
+
              ]}
+
+
+
       ]
     }
   }
