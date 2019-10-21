@@ -435,7 +435,9 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
               }
 
              ]}
+             console.log(data)
              elements.push(data)
+             console.log(elements)
 			}
 
 			
