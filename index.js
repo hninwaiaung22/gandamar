@@ -402,6 +402,65 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 })
 }
 
+if (userButton == "build tent"){
+
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+let data = {
+	name: 'Build Tent',
+	date: `${day} ${month} ${year}`,
+	worker: 'Male'
+}
+
+db.collection('Dailywork').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
+
+}
+
+
+
+if (userButton == "Prepare soil"){
+
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+let data = {
+	name: 'Prepare Soil',
+	date: `${day} ${month} ${year}`,
+	worker: 'Male'
+}
+
+db.collection('Dailywork').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
+
+}
+
+
+
+
 if (userComment == "Female"){
 
    var a = new Date()
@@ -461,61 +520,6 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 }
 		)}
 })
-}
-if (userButton == "build tent"){
-
-	var a = new Date()
-
-var z = a.toLocaleDateString()
-
-var datearray = z.split('/')
-
-var day = datearray[1]
-
-var month = datearray[0]
-
-var year = datearray[2]
-
-let data = {
-	name: 'Build Tent',
-	date: `${day} ${month} ${year}`,
-	worker: 'Male'
-}
-
-db.collection('Dailywork').add(data).then(ref=>{
-	console.log('document ID:', ref.id)
-})
-
-
-}
-
-
-
-if (userButton == "Prepare soil"){
-
-	var a = new Date()
-
-var z = a.toLocaleDateString()
-
-var datearray = z.split('/')
-
-var day = datearray[1]
-
-var month = datearray[0]
-
-var year = datearray[2]
-
-let data = {
-	name: 'Prepare Soil',
-	date: `${day} ${month} ${year}`,
-	worker: 'Male'
-}
-
-db.collection('Dailywork').add(data).then(ref=>{
-	console.log('document ID:', ref.id)
-})
-
-
 }
 
 
