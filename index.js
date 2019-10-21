@@ -516,8 +516,7 @@ requestify.post(sendmessageurl,
     "attachment":{
       "type":"template",
       "payload":{
-        "template_type":"list",
-        "top_element_style": "compact",
+        "template_type":"generic",
         "elements":elements
     }
   }
