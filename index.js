@@ -193,7 +193,7 @@ app.post('/webhook', (req, res) => {
   }
 
 
- if (userComment == "Monitor"){
+ if (userButton == "Monitor"){
 
  	requestify.post(sendmessageurl,
  	{
