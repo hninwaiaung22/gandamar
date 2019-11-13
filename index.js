@@ -139,30 +139,30 @@ app.post('/webhook', (req, res) => {
 		db.collection('Owner').where('ID', '==', `${senderID}`).get().then( snapshot => {
 	if(snapshot.empty){
 		requestify.post(sendmessageurl,
-   {	
-   		"recipient":{
-  	  	"id":senderID
-  },
-  
-  "message":{
-    "text": "Choose function:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Monitor",
-        "payload":"monitor"
-        
-      },{
-        "content_type":"text",
-        "title":"View Report",
-        "payload":"payload"
-        
-      } 
-    ]
-  }
-  }).then(result=>{ console.log("ok")
-  }).catch(err=>{console.log("err",err)}) 
-        
+		   {	
+		   		"recipient":{
+		  	  	"id":senderID
+		  },
+		  
+		  "message":{
+		    "text": "Choose function:",
+		    "quick_replies":[
+		      {
+		        "content_type":"text",
+		        "title":"Monitor",
+		        "payload":"payload"
+		        
+		      },{
+		        "content_type":"text",
+		        "title":"View Report",
+		        "payload":"payload"
+		        
+		      } 
+		    ]
+		  }
+		  }).then(result=>{ console.log("ok")
+		  }).catch(err=>{console.log("err",err)}) 
+		        
       }
 		else{
 			requestify.post(sendmessageurl,
@@ -193,134 +193,132 @@ app.post('/webhook', (req, res) => {
   }
 
 
- if (userComment == "monitor"){
-
+ if (userComment == "Monitor"){
+ 	console.log("insidie monitor")
  	requestify.post(sendmessageurl,
  	{
  		"recipient":{
- 		"id":senderID
- 	},
+ 			"id":senderID
+ 		},
  	"message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":[
-           {
-            "title":"Build Tent or Update Tent",
-            "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Build Tent",
-                "payload":"build tent"
-              }
+	 "attachment":{
+	      "type":"template",
+	      "payload":{
+	        "template_type":"generic",
+	        "elements":[
+	           {
+	            "title":"Build Tent or Update Tent",
+	            "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
+	            	"buttons":[
+		              {
+		                "type":"postback",
+		                "title":"Build Tent",
+		                "payload":"build tent"
+		              }
+	             ]},
 
-             ]},
+	           {
+	            "title":"Prepare soil and make groove",
+	            "subtitle":"Worker must go into the tent and view the soil condition and report to me.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Prepare soil",
+	                "payload":"Prepare soil"
+	              }
 
-           {
-            "title":"Prepare soil and make groove",
-            "subtitle":"Worker must go into the tent and view the soil condition and report to me.",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Prepare soil",
-                "payload":"Prepare soil"
-              }
+	             ]},
 
-             ]},
+	             {
+	            "title":"Planting",
+	            "subtitle":"Female worker need to plant according to the owner direction.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Start Planting",
+	                "payload":"start planting"
+	              }
 
-             {
-            "title":"Planting",
-            "subtitle":"Female worker need to plant according to the owner direction.",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Start Planting",
-                "payload":"start planting"
-              }
+	             ]},
 
-             ]},
+	             {
+	            "title":"Add Fertilizer",
+	            "subtitle":"Female worker need to add according to the direction.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Add Fertilizer",
+	                "payload":"add fertilizer"
+	              }
 
-             {
-            "title":"Add Fertilizer",
-            "subtitle":"Female worker need to add according to the direction.",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Add Fertilizer",
-                "payload":"add fertilizer"
-              }
+	             ]},
 
-             ]},
+	             {
+	            "title":"Bamboo Matting",
+	            "subtitle":"Female worker need to make bamboo matting for 2 months plant.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Make Bamboo Matting",
+	                "payload":"make bamboo matting"
+	              }
 
-             {
-            "title":"Bamboo Matting",
-            "subtitle":"Female worker need to make bamboo matting for 2 months plant.",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Make Bamboo Matting",
-                "payload":"make bamboo matting"
-              }
+	             ]},
 
-             ]},
+	             {
+	            "title":"Pick up and Bunch up flower",
+	            "subtitle":"Female worker must pick up the flowers and then bunch up the flowers.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Pick Up in Blassom time",
+	                "payload":"pickup and bunchup"
+	              }
 
-             {
-            "title":"Pick up and Bunch up flower",
-            "subtitle":"Female worker must pick up the flowers and then bunch up the flowers.",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Pick Up in Blassom time",
-                "payload":"pickup and bunchup"
-              }
+	             ]},
 
-             ]},
+	             {
+	            "title":"Deliver plant to wholesale",
+	            "subtitle":"Female worker .",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Delivering the flowers",
+	                "payload":"deliver plants"
+	              }
 
-             {
-            "title":"Deliver plant to wholesale",
-            "subtitle":"Female worker .",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Delivering the flowers",
-                "payload":"deliver plants"
-              }
+	             ]},
 
-             ]},
+	             {
+	            "title":"Contact to small client",
+	            "subtitle":"if the flowers has a small pieces of bunchup.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":" contact to small client",
+	                "payload":"contact to sc"
+	              }
 
-             {
-            "title":"Contact to small client",
-            "subtitle":"if the flowers has a small pieces of bunchup.",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":" contact to small client",
-                "payload":"contact to sc"
-              }
+	             ]},
 
-             ]},
+	             {
+	            "title":"Job Position for Worker",
+	            "subtitle":"We are needed the position of work for Both Male and Female .",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Job position for workers",
+	                "payload":"job position"
+	              }
 
-             {
-            "title":"Job Position for Worker",
-            "subtitle":"We are needed the position of work for Both Male and Female .",
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Job position for workers",
-                "payload":"job position"
-              }
+	             ]}
 
-             ]}
-
-
-
-      ]
-    }
-  }
-}
- 	})}
+	      ]
+	    }
+	  }
+	}
+ 	})
+ }
 
 if (userComment == "Male"){
 
