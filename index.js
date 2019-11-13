@@ -150,7 +150,7 @@ app.post('/webhook', (req, res) => {
       {
         "content_type":"text",
         "title":"Monitor",
-        "payload":"payload"
+        "payload":"monitor"
         
       },{
         "content_type":"text",
@@ -193,7 +193,7 @@ app.post('/webhook', (req, res) => {
   }
 
 
- if (userButton == "Monitor"){
+ if (userComment == "monitor"){
 
  	requestify.post(sendmessageurl,
  	{
