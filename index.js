@@ -5,7 +5,8 @@ const
 requestify=require('requestify'),
   express = require('express'),
   bodyParser = require('body-parser'),
-  PageAccessToken='EAAFlv95qJK0BAO4wStiwH9XpP0RTlqVondE6ZAUh3YoC8m3eAZBfx7uBiZCAhZCvgYDGynGHGFGxd7ZC5NpifnTAPXOM1OfJG7PKzh6Rjc0ZCEhcB4TZBZBe5Unl05eeUYZCi5ON5d4ossCcL1J4YK0bcsFWXJIBn4HUJGCSl5z5OTVFfskMf4ZCZAq',
+  PageAccessToken1='EAAFlv95qJK0BAO4wStiwH9XpP0RTlqVondE6ZAUh3YoC8m3eAZBfx7uBiZCAhZCvgYDGynGHGFGxd7ZC5NpifnTAPXOM1OfJG7PKzh6Rjc0ZCEhcB4TZBZBe5Unl05eeUYZCi5ON5d4ossCcL1J4YK0bcsFWXJIBn4HUJGCSl5z5OTVFfskMf4ZCZAq',
+  PageAccessToken='EAAFlv95qJK0BAOp3bT9eEHB27hHMkLvd9a8aZAZB5daInNk8ZAUriwseGl516XZBjFZBB4UlZBmtPfbCJB3sHfFSahsdac4iZC8u0SjYZAlZB7zRxbqSvhPANFQcUB0MTKB0GIilZCFrPytPdNVJpSwQZCbJfxFdWDWusKbZAAfNAlmB1tUIMnJzw0Lk',
   app = express().use(bodyParser.json()); // creates express http server 
    const sendmessageurl='https://graph.facebook.com/v4.0/me/messages?access_token='+PageAccessToken
    const admin= require('firebase-admin');
@@ -133,65 +134,10 @@ app.post('/webhook', (req, res) => {
 	}}
 	 if(userButton == 'Hi' || userComment == 'Hi'){
 
- 
-requestify.post(sendmessageurl,
-{        
-       "recipient":{
-    "id":senderID
-  },
-  
-  "message":{
-    "text": "Choose type:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Worker",
-        "payload":"payload"
-        
-      },{
-        "content_type":"text",
-        "title":"Owner",
-        "payload":"payload"
        
-      }
-    ]
-  }
-      }).then(function(success){
-console.log('successful template');
-}).catch(function(error){
-console.log('error', error);
-  
-  });
-  }
-   if(userComment == "Worker"){
-
-   	requestify.post(sendmessageurl,
-   {	
-   		"recipient":{
-  	  	"id":senderID
-  },
-  
-  "message":{
-    "text": "Choose type:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Male",
-        "payload":"payload"
-        
-      },{
-        "content_type":"text",
-        "title":"Female",
-        "payload":"payload"
-      }
-    ]
-  }
-  }) 
-}
-
-if(userComment == "Owner"){
-
-   	requestify.post(sendmessageurl,
+		db.collection('Owner').where('ID', '==', `${role}`).get().then( snapshot => {
+	if(snapshot.empty){
+		requestify.post(sendmessageurl,
    {	
    		"recipient":{
   	  	"id":senderID
@@ -214,7 +160,37 @@ if(userComment == "Owner"){
     ]
   }
   }) 
+        
+      }
+		else{
+			requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":senderID
+  },
+  
+  "message":{
+    "text": "Choose type:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Male",
+        "payload":"payload"
+        
+      },{
+        "content_type":"text",
+        "title":"Female",
+        "payload":"payload"
+      }
+    ]
+  }
+  }) 
+		}
 }
+})
+  }
+
+
  if (userComment == "Monitor"){
 
  	requestify.post(sendmessageurl,
