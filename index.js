@@ -136,7 +136,8 @@ app.post('/webhook', (req, res) => {
 	 if(userButton == 'Hi' || userComment == 'Hi'){
 
        
-		db.collection('Owner').doc(`${senderID}`).get().then( snapshot => {
+		db.collection('Owner').where('ID','==',`${senderID}`).get().then( snapshot => {
+			console.log(snapshot)
 	if(snapshot.empty){
 		requestify.post(sendmessageurl,
    {	
