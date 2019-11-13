@@ -126,6 +126,7 @@ app.post('/webhook', (req, res) => {
     if (webhook_event.message) {if (webhook_event.message.text) {
     	var userComment=webhook_event.message.text;
     	console.log('userComment',userComment);
+
     }
 	if (webhook_event.message.attachments){
 		var userImage=webhook_event.message.attachments;
@@ -135,7 +136,7 @@ app.post('/webhook', (req, res) => {
 	 if(userButton == 'Hi' || userComment == 'Hi'){
 
        
-		db.collection('Owner').where('ID', '==', `${role}`).get().then( snapshot => {
+		db.collection('Owner').where('ID', '==', `${senderID}`).get().then( snapshot => {
 	if(snapshot.empty){
 		requestify.post(sendmessageurl,
    {	
@@ -159,7 +160,8 @@ app.post('/webhook', (req, res) => {
       } 
     ]
   }
-  }) 
+  }).then(result=>{ console.log("ok")
+  }).catch(err=>{console.log("err",err)}) 
         
       }
 		else{
@@ -184,7 +186,7 @@ app.post('/webhook', (req, res) => {
       }
     ]
   }
-  }) 
+  }).then(result=>{console.log("ok")}).catch(err=>{console.log("err",err)}) 
 		}
 })
 
