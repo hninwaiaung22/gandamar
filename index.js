@@ -323,7 +323,7 @@ app.post('/webhook', (req, res) => {
  if (userComment=="View Report"){
  	requestify.post(sendmessageurl,
  	{
- 		"recipient":
+ 		"recipient":{
  		"id":senderID
  	},
  		"message":{
