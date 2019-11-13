@@ -136,7 +136,7 @@ app.post('/webhook', (req, res) => {
 	 if(userButton == 'Hi' || userComment == 'Hi'){
 
        
-		db.collection('Owner').where('ID', '==', `${senderID}`).get().then( snapshot => {
+		db.collection('Owner').where('ID', '==', senderID.toString()).get().then( snapshot => {
 	if(snapshot.empty){
 		requestify.post(sendmessageurl,
 		   {	
@@ -320,6 +320,17 @@ app.post('/webhook', (req, res) => {
  	})
  }
 
+ if (userComment=="View Report"){
+ 	requestify.post(sendmessageurl,
+ 	{
+ 		"recipient":
+ 		"id":senderID
+ 	},
+ 		"message":{
+
+ 	}
+ 	})
+ }
 if (userComment == "Male"){
 
 var a = new Date()
@@ -396,7 +407,8 @@ var year = datearray[2]
 let data = {
 	name: 'Build Tent',
 	date: `${day} ${month} ${year}`,
-	worker: 'Male'
+	worker: 'Male',
+	status:'In-Progress'
 }
 
 db.collection('Dailywork').add(data).then(ref=>{
@@ -425,7 +437,8 @@ var year = datearray[2]
 let data = {
 	name: 'Prepare Soil',
 	date: `${day} ${month} ${year}`,
-	worker: 'Male'
+	worker: 'Male',
+	status:'In-Progress'
 }
 
 db.collection('Dailywork').add(data).then(ref=>{
@@ -443,7 +456,7 @@ if (userComment == "Female"){
    var a = new Date()
 
 var z = a.toLocaleDateString()
-
+	
 var datearray = z.split('/')
 
 var day = datearray[1]
@@ -519,7 +532,8 @@ var year = datearray[2]
 let data = {
 	name: 'Start Planting',
 	date: `${day} ${month} ${year}`,
-	worker: 'Female'
+	worker: 'Female',
+	status:'In-Progress'
 }
 
 db.collection('Dailywork').add(data).then(ref=>{
@@ -548,7 +562,8 @@ var year = datearray[2]
 let data = {
 	name: 'Add Fertilizer',
 	date: `${day} ${month} ${year}`,
-	worker: 'Female'
+	worker: 'Female',
+	status:'In-Progress'
 }
 
 db.collection('Dailywork').add(data).then(ref=>{
@@ -575,7 +590,8 @@ var year = datearray[2]
 let data = {
 	name: 'Make Bamboo Matting',
 	date: `${day} ${month} ${year}`,
-	worker: 'Female'
+	worker: 'Female',
+	status:'In-Progress'
 }
 
 db.collection('Dailywork').add(data).then(ref=>{
