@@ -139,6 +139,32 @@ app.post('/webhook', (req, res) => {
 		db.collection('Owner').where('ID', '==', senderID.toString()).get().then( snapshot => {
 	if(snapshot.empty){
 		requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":senderID
+  },
+  
+  "message":{
+    "text": "Choose type:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Male",
+        "payload":"payload"
+        
+      },{
+        "content_type":"text",
+        "title":"Female",
+        "payload":"payload"
+      }
+    ]
+  }
+  }).then(result=>{ console.log("ok")
+		  }).catch(err=>{console.log("err",err)}) 
+		        
+      }
+		else{
+			requestify.post(sendmessageurl,
 		   {	
 		   		"recipient":{
 		  	  	"id":senderID
@@ -160,33 +186,7 @@ app.post('/webhook', (req, res) => {
 		      } 
 		    ]
 		  }
-		  }).then(result=>{ console.log("ok")
-		  }).catch(err=>{console.log("err",err)}) 
-		        
-      }
-		else{
-			requestify.post(sendmessageurl,
-   {	
-   		"recipient":{
-  	  	"id":senderID
-  },
-  
-  "message":{
-    "text": "Choose type:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Male",
-        "payload":"payload"
-        
-      },{
-        "content_type":"text",
-        "title":"Female",
-        "payload":"payload"
-      }
-    ]
-  }
-  }).then(result=>{console.log("ok")}).catch(err=>{console.log("err",err)}) 
+		  }).then(result=>{console.log("ok")}).catch(err=>{console.log("err",err)}) 
 		}
 })
 
