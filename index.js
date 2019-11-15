@@ -336,9 +336,11 @@ var year = datearray[2]
 
 var todaydate = `${day} ${month} ${year}`
 
+var In_progress = `${In_progress}`
+
 var elements = []
 
-db.collection('Dailywork').where('status', '==', `${In-Progress}`).get().then( snapshot => {
+db.collection('Dailywork').where('status', '==', `${In_progress}`).get().then( snapshot => {
 	if(snapshot.empty){}
 		else{
 			elements = []
