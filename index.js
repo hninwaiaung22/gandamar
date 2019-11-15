@@ -133,7 +133,8 @@ app.post('/webhook', (req, res) => {
 		console.log('userPhoto',userImage);
 
 	}}
-	 if(userButton == 'Hi' || userComment == 'Hi'){
+
+  	 if(userButton == 'Hi' || userComment == 'Hi'){
 
        
 		db.collection('Owner').where('ID','==',`${senderID}`).get().then( snapshot => {
@@ -678,7 +679,6 @@ db.collection('Dailywork').add(data).then(ref=>{
 
 
 }
-  
    } );
 
     // Returns a '200 OK' response to all requests
