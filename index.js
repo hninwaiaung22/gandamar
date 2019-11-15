@@ -375,7 +375,8 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 
 }*/
 
-if (userButton.includes('Workcomplete')){
+if(userButton){
+	if (userButton.includes('Workcomplete')){
 var string = userButton
 var strarray = string.split(' ')
 if(strarray.length = 6){
@@ -408,6 +409,7 @@ db.collection('Dailywork').where('date','==',`${todaydate}`).where('name','==',`
 
 
 
+}
 }
 
 if (userComment == "Male"){
