@@ -336,20 +336,19 @@ var year = datearray[2]
 
 var todaydate = `${day} ${month} ${year}`
 
-var In_progress = `${In_progress}`
-
 var elements = []
 
-db.collection('Dailywork').where('status', '==', `${In_progress}`).get().then( snapshot => {
+db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
 	if(snapshot.empty){}
 		else{
 			elements = []
 			snapshot.forEach( doc => {
-			if(doc.data().status == 'complete'){
+			
 				let data = {
             "title":doc.data().name,
-            "subtitle":`${doc.data().date} to ${doc.data().name}`,
-            	}
+            "subtitle":`Status: ${doc.data().status}`,
+        }
+            	
 
              elements.push(data)
 			}
@@ -375,30 +374,37 @@ db.collection('Dailywork').where('status', '==', `${In_progress}`).get().then( s
 
 }
 
-if (userButton == "Complete"){
+if (userButton.includes('Workcomplete')){
+var string = userButton
+var strarray = string.split(' ')
+if(strarray.length = 6){
+	var actionname = strarray[4]+' '+strarray[5]
+}else{
+	var actionname = strarray[4]+' '+strarray[5]+' '+strarray[6]
+}
+var day = strarray[1]
 
-	var a = new Date()
+var month = strarray[2]
 
-var z = a.toLocaleDateString()
-
-var datearray = z.split('/')
-
-var day = datearray[1]
-
-var month = datearray[0]
-
-var year = datearray[2]
+var year = strarray[3]
 
 let data = {
 	name: 'Build Tent',
 	date: `${day} ${month} ${year}`,
 	worker: 'Male',
-	status:'In-Progress'
+	status:'complete'
 }
 
-db.collection('Dailywork').add(data).then(ref=>{
-	console.log('document ID:', ref.id)
+db.collection('Dailywork').where('date','==',`${todaydate}`).where('name','==',`${actionname}`).get().then(doclist => {
+	if(doclist.empty){
+
+	}else{
+		doclist.forEach(doc => {
+			db.collection('Dailywork').doc(doc.id).set(data, {merge: true})
+		})
+	}
 })
+
 
 
 }
