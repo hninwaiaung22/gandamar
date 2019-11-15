@@ -377,6 +377,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 if(userButton){
 	if (userButton.includes('Workcomplete')){
 var string = userButton
+console.log(string, 'within include statement')
 var strarray = string.split(' ')
 if(strarray.length = 6){
 	var actionname = strarray[4]+' '+strarray[5]
@@ -390,13 +391,15 @@ var month = strarray[2]
 var year = strarray[3]
 
 let data = {
-	name: 'Build Tent',
+	name: actionname,
 	date: `${day} ${month} ${year}`,
 	worker: 'Male',
 	status:'complete'
 }
 
-db.collection('Dailywork').where('date','==',`${todaydate}`).where('name','==',`${actionname}`).get().then(doclist => {
+console.log(data)
+
+db.collection('Dailywork').where('date','==',`${day} ${month} ${year}`).where('name','==',`${actionname}`).get().then(doclist => {
 	if(doclist.empty){
 
 	}else{
