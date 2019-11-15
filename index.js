@@ -431,18 +431,11 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 		else{
 			elements = []
 			snapshot.forEach( doc => {
-			if(doc.data().worker == 'Male'){
+			if(doc.data().status == 'Complete'){
 				let data = {
             "title":doc.data().name,
             "subtitle":`${doc.data().date} to ${doc.data().name}`,
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Complete",
-                "payload":`Workcomplete ${doc.data().date} ${doc.data().name}`
-              }
-
-             ]}
+            }
 
              elements.push(data)
 			}
