@@ -322,7 +322,7 @@ app.post('/webhook', (req, res) => {
  	})
  }
 
-if (userComment == "View Report"){
+/*if (userComment == "View Report"){
 	var a = new Date()
 
 var z = a.toLocaleDateString()
@@ -373,7 +373,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
  	})}
 })
 
-}
+}*/
 
 if (userButton.includes('Workcomplete')){
 var string = userButton
