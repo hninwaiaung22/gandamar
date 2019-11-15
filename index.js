@@ -401,6 +401,7 @@ db.collection('Dailywork').where('date','==',`${todaydate}`).where('name','==',`
 
 	}else{
 		doclist.forEach(doc => {
+			console.log(doc.id)
 			db.collection('Dailywork').doc(doc.id).set(data, {merge: true})
 		})
 	}
