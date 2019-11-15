@@ -338,23 +338,16 @@ var todaydate = `${day} ${month} ${year}`
 
 var elements = []
 
-db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
+db.collection('Dailywork').where('status', '==', `${In-Progress}`).get().then( snapshot => {
 	if(snapshot.empty){}
 		else{
 			elements = []
 			snapshot.forEach( doc => {
-			if(doc.data().worker == 'Male'){
+			if(doc.data().status == 'complete'){
 				let data = {
             "title":doc.data().name,
             "subtitle":`${doc.data().date} to ${doc.data().name}`,
-            	"buttons":[
-              {
-                "type":"postback",
-                "title":"Complete",
-                "payload":`Workcomplete ${doc.data().date} ${doc.data().name}`
-              }
-
-             ]}
+            	}
 
              elements.push(data)
 			}
@@ -431,11 +424,18 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 		else{
 			elements = []
 			snapshot.forEach( doc => {
-			if(doc.data().status == 'Complete'){
+			if(doc.data().worker == 'Male'){
 				let data = {
             "title":doc.data().name,
             "subtitle":`${doc.data().date} to ${doc.data().name}`,
-            }
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Complete",
+                "payload":`Workcomplete ${doc.data().date} ${doc.data().name}`
+              }
+
+             ]}
 
              elements.push(data)
 			}
