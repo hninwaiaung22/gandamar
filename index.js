@@ -321,17 +321,93 @@ app.post('/webhook', (req, res) => {
  	})
  }
 
- if (userComment=="View Report"){
- 	requestify.post(sendmessageurl,
+if (userComment == "View Report"){
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+var todaydate = `${day} ${month} ${year}`
+
+var elements = []
+
+db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
+	if(snapshot.empty){}
+		else{
+			elements = []
+			snapshot.forEach( doc => {
+			if(doc.data().worker == 'Male'){
+				let data = {
+            "title":doc.data().name,
+            "subtitle":`${doc.data().date} to ${doc.data().name}`,
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Complete",
+                "payload":`Workcomplete ${doc.data().date} ${doc.data().name}`
+              }
+
+             ]}
+
+             elements.push(data)
+			}
+
+			
+		})
+		requestify.post(sendmessageurl,
  	{
  		"recipient":{
  		"id":senderID
  	},
- 		"message":{
+ 	"message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":elements
+    }
+  }
+}
+ 	})}
+})
 
- 	}
- 	})
- }
+}
+
+if (userButton == "Complete"){
+
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+let data = {
+	name: 'Build Tent',
+	date: `${day} ${month} ${year}`,
+	worker: 'Male',
+	status:'In-Progress'
+}
+
+db.collection('Dailywork').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
+
+}
+
 if (userComment == "Male"){
 
 var a = new Date()
