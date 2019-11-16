@@ -283,14 +283,16 @@ app.post('/webhook', (req, res) => {
 	             ]},
 
 	             {
-	            "title":"Deliver plant to wholesale",
+	            "title":"Contact to wholesale to deliver flower",
 	            "subtitle":"Female worker .",
 	            	"buttons":[
 	              {
-	                "type":"postback",
-	                "title":"Delivering the flowers",
-	                "payload":"deliver plants"
-	              }
+  					"type":"phone_number",
+  					"title":"Call Wholesale",
+  					"payload":"<+959977136483>"
+				}
+
+Log In
 
 	             ]},
 
@@ -719,33 +721,6 @@ db.collection('Dailywork').add(data).then(ref=>{
 }
 
 
-if (userButton == "deliver plants"){
-
-	var a = new Date()
-
-var z = a.toLocaleDateString()
-
-var datearray = z.split('/')
-
-var day = datearray[1]
-
-var month = datearray[0]
-
-var year = datearray[2]
-
-let data = {
-	name: 'Deliver plants to the wholesale',
-	date: `${day} ${month} ${year}`,
-	worker: 'Female',
-	status:'In-Progress'
-}
-
-db.collection('Dailywork').add(data).then(ref=>{
-	console.log('document ID:', ref.id)
-})
-
-
-}
 
 
 if (userComment == "Small Client"){
