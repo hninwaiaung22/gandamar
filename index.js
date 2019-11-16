@@ -292,8 +292,6 @@ app.post('/webhook', (req, res) => {
   					"payload":"<+959977136483>"
 				}
 
-Log In
-
 	             ]},
 
 	             {
