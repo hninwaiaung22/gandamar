@@ -157,6 +157,10 @@ app.post('/webhook', (req, res) => {
         "content_type":"text",
         "title":"Female",
         "payload":"payload"
+      },{
+        "content_type":"text",
+        "title":"Small Client",
+        "payload":"payload"
       }
     ]
   }
@@ -684,6 +688,128 @@ db.collection('Dailywork').add(data).then(ref=>{
 
 
 }
+
+
+if (userButton == "pickup and bunchup"){
+
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+let data = {
+	name: 'Pickup and Bunchup flower',
+	date: `${day} ${month} ${year}`,
+	worker: 'Female',
+	status:'In-Progress'
+}
+
+db.collection('Dailywork').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
+
+}
+
+
+if (userButton == "deliver plants"){
+
+	var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+let data = {
+	name: 'Deliver plants to the wholesale',
+	date: `${day} ${month} ${year}`,
+	worker: 'Female',
+	status:'In-Progress'
+}
+
+db.collection('Dailywork').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
+
+}
+
+
+if (userComment == "Small Client"){
+
+var a = new Date()
+
+var z = a.toLocaleDateString()
+
+var datearray = z.split('/')
+
+var day = datearray[1]
+
+var month = datearray[0]
+
+var year = datearray[2]
+
+var todaydate = `${day} ${month} ${year}`
+
+var elements = []
+
+db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
+	if(snapshot.empty){}
+		else{
+			elements = []
+			snapshot.forEach( doc => {
+			if(doc.data().worker == 'Male'){
+				let data = {
+            "title":doc.data().name,
+            "subtitle":`${doc.data().date} to ${doc.data().name}`,
+            	"buttons":[
+              {
+                "type":"postback",
+                "title":"Complete",
+                "payload":`Workcomplete ${doc.data().date} ${doc.data().name}`
+              }
+
+             ]}
+
+             elements.push(data)
+			}
+
+			
+		})
+		requestify.post(sendmessageurl,
+ 	{
+ 		"recipient":{
+ 		"id":senderID
+ 	},
+ 	"message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":elements
+    }
+  }
+}
+ 	})}
+})
+
+}
+
+
+
    } );
 
     // Returns a '200 OK' response to all requests
