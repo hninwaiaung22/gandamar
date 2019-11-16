@@ -766,12 +766,12 @@ var todaydate = `${day} ${month} ${year}`
 
 var elements = []
 
-db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snapshot => {
+db.collection('Supplier').where('date', '==', `${todaydate}`).get().then( snapshot => {
 	if(snapshot.empty){}
 		else{
 			elements = []
 			snapshot.forEach( doc => {
-			if(doc.data().worker == 'Male'){
+			if(doc.data().small_client == 'Daw Mya'){
 				let data = {
             "title":doc.data().name,
             "subtitle":`${doc.data().date} to ${doc.data().name}`,
@@ -779,7 +779,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
               {
                 "type":"postback",
                 "title":"Complete",
-                "payload":`Workcomplete ${doc.data().date} ${doc.data().name}`
+                "payload":`Small_client ${doc.data().date} ${doc.data().name}`
               }
 
              ]}
@@ -823,13 +823,12 @@ var month = datearray[0]
 var year = datearray[2]
 
 let data = {
-	name: 'Start Planting',
+	name: 'Call me',
 	date: `${day} ${month} ${year}`,
-	worker: 'Female',
-	status:'In-Progress'
+	small_client: 'Daw Mya'
 }
 
-db.collection('Dailywork').add(data).then(ref=>{
+db.collection('Supplier').add(data).then(ref=>{
 	console.log('document ID:', ref.id)
 })
 
