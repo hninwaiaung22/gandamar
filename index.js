@@ -774,7 +774,7 @@ db.collection('Supplier').where('date', '==', `${todaydate}`).get().then( snapsh
 			if(doc.data().small_client == 'Daw Mya'){
 				let data = {
             "title":doc.data().name,
-            "subtitle":`${doc.data().date} to ${doc.data().name}`,
+            "subtitle":`${doc.data().date}  ${doc.data().name}`,
             	"buttons":[
               {
                 "type":"postback",
@@ -823,7 +823,7 @@ var month = datearray[0]
 var year = datearray[2]
 
 let data = {
-	name: 'Call me',
+	name: 'Contact To Owner',
 	date: `${day} ${month} ${year}`,
 	small_client: 'Daw Mya'
 }
