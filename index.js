@@ -157,10 +157,6 @@ app.post('/webhook', (req, res) => {
         "content_type":"text",
         "title":"Female",
         "payload":"payload"
-      },{
-        "content_type":"text",
-        "title":"Small Client",
-        "payload":"payload"
       }
     ]
   }
@@ -289,7 +285,7 @@ app.post('/webhook', (req, res) => {
 	              {
   					"type":"phone_number",
   					"title":"Call Wholesale",
-  					"payload":"<+959977136483>"
+  					"payload":"<+959977136406>"
 				}
 
 	             ]},
@@ -299,11 +295,10 @@ app.post('/webhook', (req, res) => {
 	            "subtitle":"if the flowers has a small pieces of bunchup.",
 	            	"buttons":[
 	              {
-	                "type":"postback",
-	                "title":" contact to small client",
-	                "payload":"contact to sc"
-	              }
-
+  					"type":"phone_number",
+  					"title":"Call Small Client",
+  					"payload":"<+959977136406>"
+				}
 	             ]},
 
 	             {
@@ -721,92 +716,9 @@ db.collection('Dailywork').add(data).then(ref=>{
 
 
 
-if (userComment == "Small Client"){
-
-var a = new Date()
-
-var z = a.toLocaleDateString()
-
-var datearray = z.split('/')
-
-var day = datearray[1]
-
-var month = datearray[0]
-
-var year = datearray[2]
-
-var todaydate = `${day} ${month} ${year}`
-
-var elements = []
-
-db.collection('Supplier').where('date', '==', `${todaydate}`).get().then( snapshot => {
-	if(snapshot.empty){}
-		else{
-			elements = []
-			snapshot.forEach( doc => {
-			if(doc.data().small_client == 'Daw Mya'){
-				let data = {
-            "title":doc.data().name,
-            "subtitle":`${doc.data().date}  ${doc.data().name}`,
-            	"buttons":[
-              {
-  					"type":"phone_number",
-  					"title":"Call Owner",
-  					"payload":"<+959977136406>"
-			}
-
-             ]}
-
-             elements.push(data)
-			}
-
-			
-		})
-		requestify.post(sendmessageurl,
- 	{
- 		"recipient":{
- 		"id":senderID
- 	},
- 	"message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":elements
-    }
-  }
-}
- 	})}
-})
-
-}
-
-if (userButton == "contact to sc"){
-
-	var a = new Date()
-
-var z = a.toLocaleDateString()
-
-var datearray = z.split('/')
-
-var day = datearray[1]
-
-var month = datearray[0]
-
-var year = datearray[2]
-
-let data = {
-	name: 'Contact To Owner',
-	date: `${day} ${month} ${year}`,
-	small_client: 'Daw Mya'
-}
-
-db.collection('Supplier').add(data).then(ref=>{
-	console.log('document ID:', ref.id)
-})
 
 
-}
+
 
 
    } );
