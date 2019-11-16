@@ -779,7 +779,7 @@ db.collection('Supplier').where('date', '==', `${todaydate}`).get().then( snapsh
               {
   					"type":"phone_number",
   					"title":"Call Owner",
-  					"payload":"09977136406"
+  					"payload":"<+959977136406>"
 			}
 
              ]}
