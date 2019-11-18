@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<title>Wedding Event - Registration</title>
+
+<h2  style="border: 2px white;
+                                font-family:'Times New Roman', Times, serif ;
+                                font-size: 40px;
+                                color: blue; text-shadow:5px 2px 5px red; 
+                                margin: auto;  
+                                padding: 20px;
+                                text-align: center;" class="title">Welcome To My Gandamar Plantation</h2><br><br>
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+
+       <div id="slideshow" class="main_column_section">    
+           
+                <div class="container no-padding background-white bottom-border">
+                    <div class="row">
+                        <!-- Carousel Slideshow -->
+                        <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                            <!-- Carousel Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example" data-slide-to="1"></li>
+                                <li data-target="#carousel-example" data-slide-to="2"></li>
+                            </ol>
+                            <div class="clearfix"></div>
+                            <!-- End Carousel Indicators -->
+                            <!-- Carousel Images -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="html/images/slideshow/slide1.jpg">
+                                </div>
+                                <div class="item">
+                                    <img src="html/images/slideshow/slide2.jpg">
+                                </div>
+                                <div class="item">
+                                    <img src="html/images/slideshow/slide3.jpg">
+                                </div>
+                                <div class="item">
+                                    <img src="html/images/slideshow/slide4.jpg">
+                                </div>
+                            </div>
+                            <!-- End Carousel Images -->
+                            <!-- Carousel Controls -->
+                            <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                            <!-- End Carousel Controls -->
+                        </div>
+                        <!-- End Carousel Slideshow -->
+                    
+                </div>
+                </div>
+</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+   
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+<script>
+function getfb(id) {
+    const Url = 'https://graph.facebook.com/'+id+'?fields=first_name,last_name,profile_pic&access_token=EAAFYRyzpU1IBAHNwh0nZCbZBxZBzgEuO7cjaxTCsGAJbeZCA2IZAgmiVb0c8AaVSJUJzrdwYTlekEFlcKgdH3hNRMsDJiPEtjney2BJK6vGH3u6HhoV3ZB2YK3ZB5vtLrza26ZBRJicn4ZC4RpRgq6t80p9Ng8fo8ZCmGZADLprfF2WcDZAZBTRp0nwb6';
+
+    async function ok(){
+        const response = await fetch(Url,{
+            method: 'GET'
+        })
+        const json = await response.json();
+        return json
+    }
+
+    var json = ok()
+    return json
+}
+
+
+</script>
+</html>
+<!-- end document-->

@@ -1,0 +1,36 @@
+const sendmessageurl = joafeowef+page
+
+let generictemplate = {        
+        "recipient":{
+    "id":senderID
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload": {
+  "template_type":"generic",
+  "elements"😞
+     {
+      "title":"",
+      "image_url":"",
+      "subtitle":"",
+           
+      "buttons":[]      
+    }
+    
+  ]
+}
+    }
+  }
+      }
+
+if hi
+
+let button = {afe},{wafe}
+data.message.elements.button = []
+data.message.elements.button.push(button);
+data.message.elements.title = ''
+data.message.elements.title = 'Hi'
+
+requestify (sendmessageurl,
+  data)

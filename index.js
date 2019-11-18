@@ -207,28 +207,7 @@ app.post('/webhook', (req, res) => {
 	      "payload":{
 	        "template_type":"generic",
 	        "elements":[
-	           {
-	            "title":"Build Tent or Update Tent",
-	            "subtitle":"Worker must go to the tent and view the tent condition and report to me.",
-	            	"buttons":[
-		              {
-		                "type":"postback",
-		                "title":"Build Tent",
-		                "payload":"build tent"
-		              }
-	             ]},
-
-	           {
-	            "title":"Prepare soil and make groove",
-	            "subtitle":"Worker must go into the tent and view the soil condition and report to me.",
-	            	"buttons":[
-	              {
-	                "type":"postback",
-	                "title":"Prepare soil",
-	                "payload":"Prepare soil"
-	              }
-
-	             ]},
+	       
 
 	             {
 	            "title":"Planting",
@@ -572,11 +551,7 @@ elements = []
              console.log(data)
              elements.push(data)
              console.log(elements)
-			}
-
-			
-		
-		
+			}		
 
 })
 requestify.post(sendmessageurl,
@@ -712,14 +687,6 @@ db.collection('Dailywork').add(data).then(ref=>{
 
 
 }
-
-
-
-
-
-
-
-
 
    } );
 
