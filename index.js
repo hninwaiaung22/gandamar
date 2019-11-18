@@ -184,7 +184,13 @@ app.post('/webhook', (req, res) => {
 		        "title":"View Report",
 		        "payload":"payload"
 		        
+		      },{
+		        "content_type":"text",
+		        "title":"Search Male Workers",
+		        "payload":"payload"
+		        
 		      } 
+
 		    ]
 		  }
 		  }).then(result=>{console.log("ok")}).catch(err=>{console.log("err",err)}) 
@@ -299,6 +305,10 @@ app.post('/webhook', (req, res) => {
  	})
  }
 
+
+
+
+
  if (userComment == "Job position for Male workers"){
  	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
  		malelist.forEach(maledetails => {
@@ -313,6 +323,37 @@ app.post('/webhook', (req, res) => {
  	})
  })
 }
+
+
+
+
+if (userComment == "Search Male Workers"){
+	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
+ 		malelist.forEach(maledetails => {
+ 			var workerid = maledetails.data().fbid;
+ 			requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":workerid
+  },
+ 		
+ 	"message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":elements
+    }
+  }
+}
+ 	})
+})
+
+})
+
+}
+
+
 
 if (userComment == "View Report"){
 	var a = new Date()
@@ -407,6 +448,7 @@ db.collection('Dailywork').where('date','==',`${day} ${month} ${year}`).where('n
 
 }
 }
+
 
 if (userComment == "Male"){
 
