@@ -281,12 +281,12 @@ app.post('/webhook', (req, res) => {
 	             ]},
 
 	             {
-	            "title":"Job Position for Worker",
+	            "title":"Job Position for Male Workers",
 	            "subtitle":"We are needed the position of work for Both Male and Female .",
 	            	"buttons":[
 	              {
 	                "type":"postback",
-	                "title":"Job position for workers",
+	                "title":"Job position for Male workers",
 	                "payload":"job position"
 	              }
 
@@ -298,6 +298,21 @@ app.post('/webhook', (req, res) => {
 	}
  	})
  }
+
+ if (userComment == "Job position for Male workers"){
+ 	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
+ 		malelist.forEach(maledetails => {
+ 			var workerid = maledetails.data().fbid;
+ 			requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":workerid
+  }
+
+ 		})
+ 	})
+ })
+}
 
 if (userComment == "View Report"){
 	var a = new Date()
