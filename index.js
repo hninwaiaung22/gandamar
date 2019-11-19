@@ -215,6 +215,30 @@ app.post('/webhook', (req, res) => {
 	        "elements":[
 	       
 
+	        	{
+	            "title":"Build Tent",
+	            "subtitle":"Male worker need to plant according to the owner direction.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"To Build Tent",
+	                "payload":"build tent"
+	              }
+
+	             ]},
+
+	             {
+	            "title":"Prepare Soil",
+	            "subtitle":"Male worker need to add according to the direction.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"To prepare soil",
+	                "payload":"Prepare soil"
+	            }
+
+	             ]},
+
 	             {
 	            "title":"Planting",
 	            "subtitle":"Female worker need to plant according to the owner direction.",
@@ -315,8 +339,8 @@ if (userComment == "Search Male Workers"){
 	            	"buttons":[
 	              {
 	                "type":"postback",
-	                "title":"Bulid Tent",
-	                "payload":"build tent"
+	                "title":"For Bulid Tent",
+	                "payload":"for build tent"
 	              }
 
 	             ]},
@@ -328,7 +352,7 @@ if (userComment == "Search Male Workers"){
 	              {
 	                "type":"postback",
 	                "title":"For Prepare Soil",
-	                "payload":"prepare soil"
+	                "payload":"for prepare soil"
 	              }
 
 	             ]}
@@ -341,31 +365,51 @@ if (userComment == "Search Male Workers"){
 
 
 
-// if (userComment == "Search Male Workers"){
-// 	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
-//  		malelist.forEach(maledetails => {
-//  			var workerid = maledetails.data().fbid;
-//  			requestify.post(sendmessageurl,
-//    {	
-//    		"recipient":{
-//   	  	"id":workerid
-//   },
+if (userComment == "for build tent"){
+	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
+		if(snapshot.empty){}
+			else{
+ 			malelist.forEach(maledetails => {
+
+ 			var workerid = maledetails.data().fbid;
+ 			if (doc.data().worker=='Male'){
+ 				let data={
+ 					"title":doc.data().name,
+ 					"subtitle":`${doc.data()date} to ${doc.data().name}`,
+ 					"buttons":[
+ 					{
+ 						"type":"postback",
+ 						"title":"Available",
+ 						"payload":`Available ${doc.data().date} ${doc.data().name}`
+
+ 					}]
+ 					
+ 				}
+ 				elements.push(data)
+ 			}
+
+ 		})
+ 			requestify.post(sendmessageurl,
+   		{	
+   		"recipient":{
+  	  	"id":workerid
+  		},
  		
-//  	"message":{
-//     "attachment":{
-//       "type":"template",
-//       "payload":{
-//         "template_type":"generic",
-//         "elements":elements
-//     }
-//   }
-// }
-//  	})
-// })
+ 		"message":{
+   	 	"attachment":{
+      	"type":"template",
+      	"payload":{
+        "template_type":"generic",
+        "elements":elements
+    }
+  }
+}
+ 	})
+}
 
-// })
+})
 
-// }
+}
 
 
 
