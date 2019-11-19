@@ -375,7 +375,7 @@ if (userComment == "for build tent"){
  			if (doc.data().worker=='Male'){
  				let data={
  					"title":doc.data().name,
- 					"subtitle":`${doc.data()date} to ${doc.data().name}`,
+ 					"subtitle":`${doc.data().date} to ${doc.data().name}`,
  					"buttons":[
  					{
  						"type":"postback",
