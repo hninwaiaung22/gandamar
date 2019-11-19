@@ -395,7 +395,7 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
 				let data = {
             "title":doc.data().name,
             "subtitle":`Status: ${doc.data().status}`,
-        }
+       		 }
             	
 
              elements.push(data)
@@ -417,7 +417,12 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
     }
   }
 }
- 	})}
+ 	})
+
+	}
+
+	
+})
 }
 
 if(userButton){
