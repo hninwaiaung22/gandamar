@@ -284,18 +284,6 @@ app.post('/webhook', (req, res) => {
   					"title":"Call Small Client",
   					"payload":"<+959977136406>"
 				}
-	             ]},
-
-	             {
-	            "title":"Job Position for Male Workers",
-	            "subtitle":"We are needed the position of work for Both Male and Female .",
-	            	"buttons":[
-	              {
-	                "type":"postback",
-	                "title":"Job position for Male workers",
-	                "payload":"job position"
-	              }
-
 	             ]}
 
 	      ]
@@ -306,52 +294,78 @@ app.post('/webhook', (req, res) => {
  }
 
 
-
-
-
- if (userComment == "Job position for Male workers"){
- 	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
- 		malelist.forEach(maledetails => {
- 			var workerid = maledetails.data().fbid;
- 			requestify.post(sendmessageurl,
-   {	
-   		"recipient":{
-  	  	"id":workerid
-  }
-
- 		})
- 	})
- })
-}
-
-
-
-
 if (userComment == "Search Male Workers"){
-	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
- 		malelist.forEach(maledetails => {
- 			var workerid = maledetails.data().fbid;
- 			requestify.post(sendmessageurl,
-   {	
-   		"recipient":{
-  	  	"id":workerid
-  },
- 		
+ 	console.log("data")
+ 	requestify.post(sendmessageurl,
+ 	{
+ 		"recipient":{
+ 			"id":senderID
+ 		},
  	"message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":elements
-    }
-  }
-}
- 	})
-})
+	 "attachment":{
+	      "type":"template",
+	      "payload":{
+	        "template_type":"generic",
+	        "elements":[
+	       
 
-})
+	             {
+	            "title":"For Build Tent",
+	            "subtitle":"Workers are need to build according to the owner direction.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"Bulid Tent",
+	                "payload":"build tent"
+	              }
 
+	             ]},
+
+	             {
+	            "title":"Prepare Soil",
+	            "subtitle":"Workers are need to prepare according to the direction.",
+	            	"buttons":[
+	              {
+	                "type":"postback",
+	                "title":"For Prepare Soil",
+	                "payload":"prepare soil"
+	              }
+
+	             ]}
+	            ]
+	 }
+	}
 }
+	})
+}
+
+
+
+// if (userComment == "Search Male Workers"){
+// 	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
+//  		malelist.forEach(maledetails => {
+//  			var workerid = maledetails.data().fbid;
+//  			requestify.post(sendmessageurl,
+//    {	
+//    		"recipient":{
+//   	  	"id":workerid
+//   },
+ 		
+//  	"message":{
+//     "attachment":{
+//       "type":"template",
+//       "payload":{
+//         "template_type":"generic",
+//         "elements":elements
+//     }
+//   }
+// }
+//  	})
+// })
+
+// })
+
+// }
 
 
 
@@ -404,8 +418,6 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
   }
 }
  	})}
-})
-
 }
 
 if(userButton){
