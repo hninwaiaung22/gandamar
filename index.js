@@ -415,7 +415,9 @@ if (userComment == "Male"){
 
 if (userButton == "for build tent"){
 let data = {
-	role:'pesticides sprayer'
+	date : `${day} ${month} ${year}`,
+	fbid : 2361714633954651 ,
+	name : 'taway'
 }
 db.collection('woker').add(data).then(ref=>{
 	console.log('document ID:', ref.id)
