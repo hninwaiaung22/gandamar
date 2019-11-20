@@ -366,7 +366,7 @@ if (userComment == "Search Male Workers"){
 
 
 if (userButton == "for build tent"){
-	db.collection('worker').doc('Male').doc('workerlist').get().then(malelist=>{
+	db.collection('worker').doc('Male').collection('workerlist').get().then(malelist=>{
 		if(snapshot.empty){}
 			else{
  			malelist.forEach(maledetails => {
