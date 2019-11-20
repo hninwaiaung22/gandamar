@@ -369,8 +369,11 @@ if (userComment == "Male"){
 	
 	var elements = [];
 	db.collection('worker').doc('Male').collection('workerlist').get().then(malelist=>{
-		if(malelist.empty){}
+		if(malelist.empty){
+			console.log("no data")
+		}
 			else{
+				console.log("get data")
  			malelist.forEach(doc => {
 
  			var workerid = doc.data().fbid;
