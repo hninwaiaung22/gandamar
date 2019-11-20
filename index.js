@@ -372,7 +372,6 @@ if (userButton == "for build tent"){
  			malelist.forEach(doc => {
 
  			var workerid = doc.data().fbid;
- 			if (doc.data().worker=='Male'){
  				let data={
  					"title":doc.data().name,
  					"subtitle":`${doc.data().date} to ${doc.data().name}`,
@@ -386,10 +385,7 @@ if (userButton == "for build tent"){
  					
  				}
  				elements.push(data)
- 			}
-
- 		})
- 			requestify.post(sendmessageurl,
+ 				requestify.post(sendmessageurl,
    		{	
    		"recipient":{
   	  	"id":workerid
@@ -405,6 +401,10 @@ if (userButton == "for build tent"){
   }
 }
  	})
+ 			
+
+ 		})
+ 			
 }
 
 })
