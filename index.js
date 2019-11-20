@@ -369,7 +369,7 @@ if (userButton == "for build tent"){
 	db.collection('worker').doc('Male').collection('workerlist').get().then(malelist=>{
 		if(malelist.empty){}
 			else{
- 			malelist.forEach(maledetails => {
+ 			malelist.forEach(doc => {
 
  			var workerid = maledetails.data().fbid;
  			if (doc.data().worker=='Male'){
