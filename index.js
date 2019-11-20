@@ -371,7 +371,7 @@ if (userButton == "for build tent"){
 			else{
  			malelist.forEach(doc => {
 
- 			var workerid = maledetails.data().fbid;
+ 			var workerid = doc.data().fbid;
  			if (doc.data().worker=='Male'){
  				let data={
  					"title":doc.data().name,
