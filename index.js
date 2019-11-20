@@ -366,6 +366,8 @@ if (userComment == "Search Male Workers"){
 
 
 if (userButton == "for build tent"){
+	
+	var elements = [];
 	db.collection('worker').doc('Male').collection('workerlist').get().then(malelist=>{
 		if(malelist.empty){}
 			else{
