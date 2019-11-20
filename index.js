@@ -415,7 +415,7 @@ if (userButton == "Male"){
 
 if (userButton == "for build tent"){
 let data = {
-	role:pesticides sprayer
+	role:'pesticides sprayer'
 }
 db.collection('woker').add(data).then(ref=>{
 	console.log('document ID:', ref.id)
