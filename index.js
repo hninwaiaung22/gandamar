@@ -449,7 +449,7 @@ var year = strarray[3]
 
 let data = {
 	name: actionname,
-	fbid: 2361714633954651,
+	fbid: 'fbid',
 	date : `${day} ${month} ${year}`
 
 }
