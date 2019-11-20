@@ -365,7 +365,7 @@ if (userComment == "Search Male Workers"){
 
 
 
-if (userButton == "for build tent"){
+if (userButton == "Male"){
 	
 	var elements = [];
 	db.collection('worker').doc('Male').collection('workerlist').get().then(malelist=>{
@@ -410,6 +410,17 @@ if (userButton == "for build tent"){
 }
 
 })
+
+}
+
+if (userButton == "for build tent"){
+let data = {
+	role:pesticides sprayer
+}
+db.collection('woker').add(data).then(ref=>{
+	console.log('document ID:', ref.id)
+})
+
 
 }
 
@@ -502,6 +513,7 @@ db.collection('Dailywork').where('date','==',`${day} ${month} ${year}`).where('n
 	}else{
 		doclist.forEach(doc => {
 			console.log(doc.id)
+
 			db.collection('Dailywork').doc(doc.id).set(data, {merge: true})
 		})
 	}
@@ -565,13 +577,14 @@ db.collection('Dailywork').where('date', '==', `${todaydate}`).get().then( snaps
       "payload":{
         "template_type":"generic",
         "elements":elements
-    }
+    }}
+
   }
-}
  	})}
 })
 
 }
+
 if (userButton == "build tent"){
 
 	var a = new Date()
