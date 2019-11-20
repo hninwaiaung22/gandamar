@@ -431,6 +431,50 @@ db.collection('woker').add(data).then(ref=>{
 
 
 
+if(userButton){
+	if (userButton.includes('Available')){
+var string = userButton
+console.log(string, 'within include statement')
+var strarray = string.split(' ')
+if(strarray.length = 6){
+	var actionname = strarray[4]+' '+strarray[5]
+}else{
+	var actionname = strarray[4]+' '+strarray[5]+' '+strarray[6]
+}
+var day = strarray[1]
+
+var month = strarray[2]
+
+var year = strarray[3]
+
+let data = {
+	name: actionname,
+	fbid: 2361714633954651,
+	date : `${day} ${month} ${year}`
+
+}
+
+console.log(data)
+
+db.collection('worker').where('date','==',`${day} ${month} ${year}`).where('name','==',`${actionname}`).where('fbid','==',`${fbid}`).get().then(doclist => {
+	if(doclist.empty){
+
+	}else{
+		doclist.forEach(doc => {
+			console.log(doc.id)
+
+			db.collection('worker').doc(doc.id).set(data, {merge: true})
+		})
+	}
+})
+
+
+
+}
+}
+
+
+
 if (userComment == "View Report"){
 	var a = new Date()
 
