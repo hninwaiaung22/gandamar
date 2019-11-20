@@ -365,7 +365,7 @@ if (userComment == "Search Male Workers"){
 
 
 
-if (userButton == "Male"){
+if (userComment == "Male"){
 	
 	var elements = [];
 	db.collection('worker').doc('Male').collection('workerlist').get().then(malelist=>{
