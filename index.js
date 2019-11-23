@@ -119,6 +119,33 @@ app.post('/webhook', (req, res) => {
       console.log(webhook_event);
       var senderID=webhook_event.sender.id;
       console.log('senderID',senderID);
+      var cron = require('node-cron');
+	  console.log("starting ...")
+	cron.schedule("0 8 * * *", () => {
+  console.log(`this message logs every minute`);
+  	requestify.post(sendmessageurl,
+   {	
+   		"recipient":{
+  	  	"id":senderID
+  },
+  	"message":{
+  		"text":"Time to water for flowers!!!"
+  	}
+});
+	cron.schedule("0 15 * * *", () => {
+    console.log(`this message logs every minute`);
+  	requestify.post(sendmessageurl,
+  {	
+   		"recipient":{
+  	  	"id":senderID
+  },
+  		"message":{
+  		"text":"Time to clean grass and check for flowers!!!"
+  	}
+  }
+});
+
+
       if(webhook_event.postback){
       	var userButton=webhook_event.postback.payload;
       	console.log('reply',userButton);
