@@ -217,6 +217,7 @@ app.post('/webhook', (req, res) => {
 
 	        	{
 	            "title":"Build Tent",
+	            "image_url":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Froyalty-free-stock-photography-white-chrysanthemum-image3772667&psig=AOvVaw3i0jVA4vGFNbOtfsp1SxQi&ust=1574573987949000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiS_LzP_-UCFQAAAAAdAAAAABAD",
 	            "subtitle":"Male worker need to plant according to the owner direction.",
 	            	"buttons":[
 	              {
@@ -456,7 +457,7 @@ let data = {
 
 console.log(data)
 
-db.collection('worker').where('date','==',`${day} ${month} ${year}`).where('name','==',`${actionname}`).where('fbid','==',`${fbid}`).get().then(doclist => {
+db.collection('worker').where('name','==',`${actionname}`).where('fbid','==',`${fbid}`).where('date','==',`${day} ${month} ${year}`).get().then(doclist => {
 	if(doclist.empty){
 
 	}else{
