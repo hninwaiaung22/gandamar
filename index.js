@@ -57,7 +57,7 @@ requestify=require('requestify'),
   "greeting": [
     {
       "locale":"default",
-      "text":"Hello {{user_first_name}}! \nWe provide service!!" 
+      "text":"Hello {{user_first_name}}! \nWelcome to the Gandamar Plantation!!" 
     }
   ]
 
@@ -124,41 +124,7 @@ app.post('/webhook', (req, res) => {
      //start
 
 
-			 var cron = require('node-cron');
-			 console.log("starting ...")
-
-			 db.collection('/worker/Female/workerlist').get().then(relt=>{
-			 	relt.forEach(aa=>{
-			 		const senderID = aa.data().fbid;
-			 				cron.schedule("1 0 * * *", () => {
-						   		requestify.post(sendmessageurl,
-								   {	
-								   		"recipient":{
-								  	  	"id":senderID
-								  },
-								  	"message":{
-								  		"text":"Time to water for flowers!!!"
-								  	}
-
-								})
-								  });
-
-							cron.schedule("0 15 * * *", () => {
-						      	requestify.post(sendmessageurl,
-								  {	
-								   		"recipient":{
-								  	  	"id":senderID
-								  },
-								  		"message":{
-								  		"text":"Time to clean grass and check for flowers!!!"
-								  	}
-								  })
-							});
-
-			 	}
-			 	)
-
-			 }).catch(err=>{console.log("err", err)})
+			 
 
      //end
 
