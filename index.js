@@ -131,7 +131,9 @@ app.post('/webhook', (req, res) => {
   	"message":{
   		"text":"Time to water for flowers!!!"
   	}
-});
+
+})
+  });
 	cron.schedule("0 15 * * *", () => {
     console.log(`this message logs every minute`);
   	requestify.post(sendmessageurl,
@@ -142,7 +144,7 @@ app.post('/webhook', (req, res) => {
   		"message":{
   		"text":"Time to clean grass and check for flowers!!!"
   	}
-  }
+  })
 });
 
 
