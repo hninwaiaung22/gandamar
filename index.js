@@ -295,7 +295,7 @@ app.post('/webhook', (req, res) => {
 
 	             {
 	            "title":"Contact to wholesale to deliver flower",
-	            "image_url":"https://nilasburmesekitchenadventures.files.wordpress.com/2018/06/flowers.jpg?w=768",
+	            "image_url":"https://nilasburmesekitchenadventures.files.wordpress.com/2018/06/flowers.jpg",
 	            "subtitle":"Female worker .",
 	            	"buttons":[
 	              {
@@ -308,7 +308,7 @@ app.post('/webhook', (req, res) => {
 
 	             {
 	            "title":"Contact to small client",
-	           "image_url":"<IMAGE_URL_TO_DISPLAY>",
+	           
 	            "subtitle":"if the flowers has a small pieces of bunchup.",
 	            	"buttons":[
 	              {
