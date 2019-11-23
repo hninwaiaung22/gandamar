@@ -121,7 +121,7 @@ app.post('/webhook', (req, res) => {
       console.log('senderID',senderID);
       var cron = require('node-cron');
 	  console.log("starting ...")
-	cron.schedule("0 8 * * *", () => {
+	cron.schedule("1 0 * * *", () => {
   console.log(`this message logs every minute`);
   	requestify.post(sendmessageurl,
    {	
